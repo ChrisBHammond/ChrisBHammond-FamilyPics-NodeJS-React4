@@ -51,7 +51,7 @@ class App {
       this.app.use(morgan('dev', { stream }));
       this.app.use(cors({ origin: true, credentials: true }));
       //un-comment this out for JWT auth.
-      //this.app.use('/users', authMiddleware);
+      this.app.use('/users', authMiddleware);
     }
 
     this.app.use(hpp());

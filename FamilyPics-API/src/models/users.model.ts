@@ -1,4 +1,5 @@
 import { User } from '@interfaces/users.interface';
+import { db } from "../database/dbconnection"
 
 // password: q1w2e3r4
 const userModel: User[] = [

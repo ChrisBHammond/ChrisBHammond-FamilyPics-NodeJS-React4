@@ -47,6 +47,7 @@ class App {
     if (this.env === 'production') {
       this.app.use(morgan('combined', { stream }));
       this.app.use(cors({ origin: 'your.domain.com', credentials: true }));
+      this.app.use('/users', authMiddleware);
     } else {
       this.app.use(morgan('dev', { stream }));
       this.app.use(cors({ origin: true, credentials: true }));

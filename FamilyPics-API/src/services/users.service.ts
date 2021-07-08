@@ -4,13 +4,26 @@ import HttpException from '@exceptions/HttpException';
 import { User } from '@interfaces/users.interface';
 import userModel from '@models/users.model';
 import { isEmpty } from '@utils/util';
+import { db } from "../database/dbconnection"
 
+type userResult = {
+  id: number
+  firstName: string,
+  lastName: string,
+  password: string
+}
+type userResults = Array<userResult>
 class UserService {
   public users = userModel;
+  //type userResults = Array<userResult>
 
-  public async findAllUser(): Promise<User[]> {
-    const users: User[] = this.users;
-    return users;
+  public async findAllUser(): Promise<userResults> {
+    // 
+    
+    let [result] = await db.query<userResults>("Select * from users")
+    console.log(result);
+    return Promise.resolve(result)
+    
   }
 
   public async findUserById(userId: number): Promise<User> {
